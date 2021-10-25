@@ -7,18 +7,29 @@ import Login from './auth/Login';
 import Auth from './auth/Auth'
 
 
-const App = () => {
-  return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoginOpen: true,
+      isRegisterOpen: false
+    };
+  }
+  render(){
+    return (
+      
+    <div className='root-container'>
+      <div className="box-container">
+      {this.state.isRegisterOpen && <Register/>}
+      {this.state.isLoginOpen && <Login/>}
+     </div>
     <Container>         
-      <Register/> 
-      <Login/>
       <Auth/>   
     </Container>
     </div>
-    </nav>
+    
   ); 
+}
 }
 
 export default App;
