@@ -25,12 +25,20 @@ class Register extends React.Component{
           <div className="box">
   
             <div className="input-group">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">First Name</label>
               <input
                 type="text"
                 name="username"
                 className="login-input"
-                placeholder="Username"/>
+                placeholder="First Name"/>
+            </div>
+            <div className="input-group">
+              <label htmlFor="username">Last Name</label>
+              <input
+                type="text" 
+                name="username"
+                className="login-input"
+                placeholder="Last Name"/>
             </div>
   
             <div className="input-group">
@@ -49,9 +57,7 @@ class Register extends React.Component{
             <button
               type="button"
               className="login-btn"
-              onClick={this
-              .submitRegister
-              .bind(this)}>Register</button>
+              onClick={this.submitRegister.bind(this)}>Register</button>
           </div>
         </div>
       );

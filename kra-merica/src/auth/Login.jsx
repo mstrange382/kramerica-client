@@ -40,9 +40,7 @@ class Login extends React.Component{
                 <button
                   type="button"
                   className="login-btn"
-                  onClick={this
-                  .submitLogin
-                  .bind(this)}>Login</button>
+                  onClick={this.submitLogin.bind(this)}>Login</button>
               </div>
             </div>
           );
