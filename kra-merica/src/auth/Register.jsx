@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Form, FormGroup, Input, Button
+} from "reactstrap"
 
 
 
@@ -34,11 +37,12 @@ class Register extends React.Component{
       console.log('hey there brother!');
 
       fetch("http://localhost:3001/user/create",{
+        user:{
       firstName: firstName,
       lastName: lastName,
       email: email,
       passwordhash: passwordhash,
-      admin: admin,
+      admin: admin,}
     })
     .then(response => {
     console.log('Registered', response);
@@ -52,15 +56,30 @@ class Register extends React.Component{
     render(){
       return (
         <div>
-          <form onSubmit={this.submitRegister}>
-            <input type="firstName" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handlechange} required/>
-            <input type="lastName" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handlechange} required/>
-            <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handlechange} required/>
-            <input type="passwordhash" name="passwordhash" placeholder="Password" value={this.state.passwordhash} onChange={this.handlechange} required/>
-            <input type="admin" name="admin" placeholder="Admin" value={this.state.admin} onChange={this.handlechange} required/>   
+          <Form onSubmit={this.submitRegister}>
 
-            <button>Register</button>        
-          </form>
+            <FormGroup>
+            <Input type="firstName" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handlechange} required/>
+            </FormGroup>
+
+            <FormGroup>
+            <Input type="lastName" name="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handlechange} required/>
+            </FormGroup>
+
+            <FormGroup>
+            <Input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handlechange} required/>
+            </FormGroup>
+
+            <FormGroup>
+            <Input type="passwordhash" name="passwordhash" placeholder="Password" value={this.state.passwordhash} onChange={this.handlechange} required/>
+            </FormGroup>
+
+            <FormGroup>
+            <Input type="admin" name="admin" placeholder="Admin" value={this.state.admin} onChange={this.handlechange} required/> 
+            </FormGroup>  
+
+            <Button>Register</Button>        
+          </Form>
         </div>
         
         

@@ -15,7 +15,7 @@ class Auth extends React.Component{
         return(
             <div>
             <Router>
-              <Route exact path="/">
+              <Route exact path="/login">
                 <Login  />
               </Route>
               <Route exact path="/register">
