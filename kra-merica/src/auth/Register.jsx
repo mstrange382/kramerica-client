@@ -36,14 +36,19 @@ class Register extends React.Component{
 
       console.log('hey there brother!');
 
-      fetch("http://localhost:3001/user/create",{
-        user:{
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      passwordhash: passwordhash,
-      admin: admin,}
+      fetch("http://localhost:3000/user/register",{
+      method: "POST",
+      body: JSON.stringify({               
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              passwordhash: passwordhash,
+              admin: admin,     
+    }),
+    cors: new Headers({
+      'Content-Type': 'application/json'
     })
+  })
     .then(response => {
     console.log('Registered', response);
     })
@@ -52,6 +57,7 @@ class Register extends React.Component{
     })
      e.preventDefault(); 
   };
+
 
     render(){
       return (
@@ -85,6 +91,6 @@ class Register extends React.Component{
         
       );
     }
-  }  
+  }
 
 export default Register

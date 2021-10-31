@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import React from 'react'
+import React, {Component} from 'react'
 import Register from './auth/Register';
 import Login from './auth/Login';
 
@@ -11,9 +11,9 @@ class App extends React.Component {
     this.state = {
       isRegisterOpen: true,
       isloginOpen: false
-    };
-    
+    };    
   }
+  
   render(){
     return (
       <div className='root-container'>
