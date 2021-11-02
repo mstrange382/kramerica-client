@@ -18,7 +18,6 @@ class Register extends React.Component{
         this.submitRegister = this.submitRegister.bind(this);
         this.handlechange = this.handlechange.bind(this);
     }
-
     handlechange(e){
       this.setState({
         [e.target.name]: e.target.value
@@ -44,14 +43,13 @@ class Register extends React.Component{
               email: email,
               passwordhash: passwordhash,
               admin: admin,     
-    }),
-    cors: new Headers({
+      }),
+      headers: new Headers({
       'Content-Type': 'application/json'
+      })
     })
-  })
-    .then(response => {
-    console.log('Registered', response);
-    })
+    .then((response) => response.json())
+    .then((data) => this.props.updateToken(data.sessionToken) )
     .catch(error => {
     console.log('Registration Error', error);
     })
@@ -84,7 +82,7 @@ class Register extends React.Component{
             <Input type="admin" name="admin" placeholder="Admin" value={this.state.admin} onChange={this.handlechange} required/> 
             </FormGroup>  
 
-            <Button>Register</Button>        
+            <Button onClick = {this.submitRegister.bind(this)}>Register</Button>        
           </Form>
         </div>
         
