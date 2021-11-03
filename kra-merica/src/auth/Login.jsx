@@ -13,26 +13,29 @@ class Login extends React.Component{
         this.submitLogin = this.submitLogin.bind(this);
         this.handlechange = this.handlechange.bind(this);
           }
+
+
           handlechange(e){
             this.setState({
               [e.target.name]: e.target.value
             })
           }
-          
+  
 
         submitLogin = (e) => {
+          e.preventDefault();
           const {
-            firstName
-            
+            firstName,
+            passwordhash            
           } = this.state;
 
           console.log('hello!!');
 
-          fetch("http://localhost:3001/user/login",{
+          fetch("http://localhost:3000/user/login",{
             method:'POST',
             body: JSON.stringify({            
-              firstName: firstName
-              
+              firstName: firstName,
+              passwordhash:passwordhash         
           }),
           headers: new Headers({
             'Content-Type': 'application/json'
@@ -43,7 +46,7 @@ class Login extends React.Component{
           .catch(error => {
           console.log('Login Error', error);
           })          
-          e.preventDefault();
+         
         };
 
         render() {

@@ -9,8 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRegisterOpen: false,
-      isLoginOpen: true,
+      isRegisterOpen: true,
+      isLoginOpen: false,
       sessionToken: ''
     }; 
   }
