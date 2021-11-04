@@ -1,17 +1,17 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import React from 'react'
-import Register from './auth/Register';
-import Login from './auth/Login';
+// import IdeaIndex from "./ideas/IdeaIndex";
+import Auth from "./auth/Auth";
+import IdeaCreate from "./ideas/IdeaCreate";
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRegisterOpen: true,
-      isLoginOpen: false,
-      sessionToken: ''
+      sessionToken: '',
+      isActive: false
     }; 
   }
   updateToken = (newToken) => {
@@ -19,31 +19,23 @@ class App extends React.Component {
     localStorage.setItem('token', newToken)
   }
 
+  clearToken = () => {
+    localStorage.clear();
+    this.setState('')
+  }
+
+  protectedViews = () => {
+     return localStorage.getItem('token') ? ( <IdeaCreate clearToken={this.clearToken} token={this.sessionToken}/>
+    ) : (
+      <Auth updateToken={this.updateToken}/>
+    );
+  };
+
   render(){
     return (
-      <div className='root-container'>
-      <div className="box-controller">
-      <div className={"controller " + (this.state.isRegisterOpen ? "selected-controller" : "")} 
-      
-      >
-         Register
-       </div>
-       <div className={"controller " + (this.state.isLoginOpen ? "selected-controller" : "")}
-        
-         >
-         Login
-       </div>
-       
-     </div>
-      
-      <div className="box-container">
-      {this.state.isRegisterOpen && <Register updateToken={this.updateToken}/>}
-      {this.state.isLoginOpen && <Login updateToken={this.updateToken}/>}
-     </div>
-    
-    </div>
-    
-    
+      <div>
+      {this.protectedViews()}
+      </div>
   ); 
 }
 }

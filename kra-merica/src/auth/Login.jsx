@@ -2,25 +2,29 @@ import React from 'react'
 import { Button, Input, Form, FormGroup } from 'reactstrap';
 
 
+
 class Login extends React.Component{
   
     constructor(props){
         super(props);
         this.state={
             firstName: '', 
-            passwordhash:'', 
+            passwordhash:'',
+            toggle: true
         }
         this.submitLogin = this.submitLogin.bind(this);
         this.handlechange = this.handlechange.bind(this);
+        
           }
-
-
           handlechange(e){
             this.setState({
               [e.target.name]: e.target.value
             })
           }
-  
+          
+          handleToggle = () => {
+            this.setState({isactive: !this.state.isActive});
+          }
 
         submitLogin = (e) => {
           e.preventDefault();
@@ -42,7 +46,7 @@ class Login extends React.Component{
             })
           })
           .then((response) => response.json())
-          .then((data) => this.props.updateToken(data.sessionToken) )
+          .then((data) => this.props.updateToken(data.sessionToken))
           .catch(error => {
           console.log('Login Error', error);
           })          

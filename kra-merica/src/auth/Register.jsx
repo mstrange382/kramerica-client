@@ -3,8 +3,6 @@ import {
   Form, FormGroup, Input, Button
 } from "reactstrap"
 
-
-
 class Register extends React.Component{
     constructor(props){
         super(props)
@@ -25,6 +23,9 @@ class Register extends React.Component{
     }
 
   submitRegister = (e) =>  {
+
+    e.preventDefault();
+    
     const {
       firstName,
       lastName,
@@ -49,14 +50,14 @@ class Register extends React.Component{
       })
     })
     .then((response) => response.json())
-    .then((data) => this.props.updateToken(data.sessionToken) )
+    .then((data) => {this.props.updateToken(data.sessionToken) 
+    console.log(data)})
+
     .catch(error => {
     console.log('Registration Error', error);
     })
-     e.preventDefault(); 
+      
   };
-
-
     render(){
       return (
         <div>
