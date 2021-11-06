@@ -5,36 +5,19 @@ import { Button, Form, FormGroup, Input, } from 'reactstrap';
 class IdeaDelete extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            name:'',
-            category:'',
-            description:''
-        }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleSubmit = (e) => {
-
-        e.preventDefault();
-
-        const {
-            name,
-            category,
-            description
-        } = this.state
+    handleDelete = (e) => {
 
         console.log('Hello!!');
 
-        fetch(`http://localhost:3000/idea/create`,
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                name: name,
-                category: category,
-                description: description
-            }),
+        fetch(`http://localhost:3000/idea/delete`,
+        {   method: 'DELETE',            
             headers: new Headers({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: this.props.token
             })
         })
         .then((response) => response.json())
@@ -45,23 +28,12 @@ class IdeaDelete extends React.Component{
     render(){
         return(
         <div>
-            <Button/>
-            <Form>
-                <FormGroup>
-                        <Input name='name' placeholder='Employee'value={this.state.name} onchange={this.handleChange}/>
-                </FormGroup>
-
-                <FormGroup>
-                    <Input placeholder='Submit your idea' name='idea' value={this.state.description} onChange={this.handleChange}/>
-                </FormGroup>
-            </Form>
-
+            <Button onClick={this.handleDelete}>
+                Delete
+            </Button> 
         </div>
         )
     }
 }
-
-
-
 
 export default IdeaDelete

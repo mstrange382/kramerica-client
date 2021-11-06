@@ -26,7 +26,7 @@ class IdeaCreate extends React.Component{
             description
         } = this.state;
 
-        console.log('Hello!!');
+        console.log(this.props.token);
 
         fetch(`http://localhost:3000/idea/create`,
         {
@@ -37,7 +37,8 @@ class IdeaCreate extends React.Component{
                 description: description,
             }),
             headers: new Headers({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: this.props.token
             })
         })
         .then((response) => response.json())
@@ -50,7 +51,8 @@ class IdeaCreate extends React.Component{
         <div>
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                        <Input type="name" name='name' placeholder='Employee'value={this.state.name} onChange={this.handleChange} required/>
+                        <Input type="name" name='name' placeholder='Employee'
+                        value={this.state.name} onChange={this.handleChange} required/>
                 </FormGroup>
 
                 <FormGroup>
@@ -64,6 +66,8 @@ class IdeaCreate extends React.Component{
             <Button onclick = {this.handleSubmit.bind(this)}>
                 Submit
             </Button>
+
+            
             </Form>
         </div>
         )

@@ -1,9 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import React from 'react'
-// import IdeaIndex from "./ideas/IdeaIndex";
 import Auth from "./auth/Auth";
-import IdeaCreate from "./ideas/IdeaCreate";
+import IdeaIndex from "./ideas/IdeaIndex";
 
 
 class App extends React.Component {
@@ -19,13 +18,20 @@ class App extends React.Component {
     localStorage.setItem('token', newToken)
   }
 
+  handleToken = () => {
+    this.setState({sessionToken: localStorage.getItem('token') });
+  }
+  componentDidMount(){
+    this.handleToken()
+  }
+
   clearToken = () => {
     localStorage.clear();
     this.setState('')
   }
 
   protectedViews = () => {
-     return localStorage.getItem('token') ? ( <IdeaCreate clearToken={this.clearToken} token={this.sessionToken}/>
+     return localStorage.getItem('token') ? ( <IdeaIndex clearToken={this.clearToken} token={this.state.sessionToken}/>
     ) : (
       <Auth updateToken={this.updateToken}/>
     );
