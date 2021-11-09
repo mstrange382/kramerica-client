@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 class IdeaDelete extends React.Component{
     constructor(props){
         super(props);
-        
+        this.state={
+            modal:false,
+        }
         this.handleDelete = this.handleDelete.bind(this);
     }
 
@@ -25,12 +27,20 @@ class IdeaDelete extends React.Component{
         console.log('Create error', error);
         })
     }
+
+    toggle = () => {
+        this.setState({modal: !this.state.modal});
+    }
     render(){
         return(
         <div>
-            <Button onClick={this.handleDelete}>
-                Delete
-            </Button> 
+            <Button color='danger' onClick={this.toggle}>Delete</Button>
+            <Modal isOpen={this.state.modal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>Delete</ModalHeader> 
+            <ModalBody>
+                <Button>Delete</Button>
+            </ModalBody>
+            </Modal>
         </div>
         )
     }

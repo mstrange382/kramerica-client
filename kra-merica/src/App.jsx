@@ -3,6 +3,8 @@ import "./App.css";
 import React from 'react'
 import Auth from "./auth/Auth";
 import IdeaIndex from "./ideas/IdeaIndex";
+import CommentIndex from "./comments/CommentIndex";
+
 
 
 class App extends React.Component {
@@ -40,9 +42,11 @@ class App extends React.Component {
   render(){
     return (
       <div>
+        
       {this.protectedViews()}
       </div>
-  ); 
+      
+  )
 }
 }
 
