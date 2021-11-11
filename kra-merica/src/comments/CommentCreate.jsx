@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, } from 'reactstrap';
+import { Button, Form, FormGroup, Input, ModalBody, ModalFooter, ModalHeader, Modal } from 'reactstrap';
 
 
 class CommentCreate extends React.Component{
@@ -8,7 +8,8 @@ class CommentCreate extends React.Component{
         this.state={
             name:'',
             category:'',
-            description:''
+            description:'',
+            modal:false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this)
@@ -38,17 +39,33 @@ class CommentCreate extends React.Component{
             }),
             headers: new Headers({
             'Content-Type': 'application/json',
-            authorization: this.props.token
+            Authorization: this.props.token
             })
         })
         .then((response) => response.json())
+        .then((commentData) => {
+            this.props.comments();
+            this.setState({
+                name:'',
+                category:'',
+                description:'',
+            })
+        })
         .catch(error => {
         console.log('Create error', error);
         })
     }
+
+    toggle = () => {
+        this.setState({modal: !this.state.modal});
+    }
     render(){
         return(
         <div>
+            <Button color="" onClick={this.toggle}>Comment</Button>
+            <Modal isOpen={this.state.modal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>Leave a comment here...</ModalHeader>
+            <ModalBody>
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                         <Input type="name" name='name' placeholder='Employee'
@@ -62,13 +79,13 @@ class CommentCreate extends React.Component{
                 <FormGroup>
                         <Input name='description' placeholder='description'value={this.state.description} onChange={this.handleChange} required/>
                 </FormGroup>
-            
-            <Button onclick = {this.handleSubmit.bind(this)}>
-                Submit
-            </Button>
-
-            
+                <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
             </Form>
+            </ModalBody>
+            <ModalFooter>
+          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+        </ModalFooter>
+        </Modal>
         </div>
         )
     }

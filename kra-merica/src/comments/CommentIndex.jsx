@@ -1,58 +1,18 @@
 import React from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Card, CardBody,CardText, CardHeader } from "reactstrap";
 import CommentUpdate from './CommentUpdate';
-import CommentDelete from './CommentDelete'
+import CommentDelete from './CommentDelete';
+import Sitebar from "../navbar/Sitebar";
+
 
 class CommentIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      idea: [],
-      user: [],
       comment: [],
     };
-    this.getIdeas = this.getIdeas.bind(this);
-    this.getComments = this.getComments.bind(this);
-    this.getUsers = this.getUsers.bind(this);
+    this.getComments = this.getComments.bind(this)
   }
-  getIdeas = () => {
-    fetch(`http://localhost:3000/idea`, {
-      method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: this.props.token,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ idea: data });
-      })
-      .catch((error) => {
-        console.log("Something went wrong. Please try again", error);
-      });
-  };
-  componentDidMount() {
-    this.getIdeas();
-    this.getComments();
-    this.getUsers();
-  }
-
-  getUsers = () => {
-    fetch(`http://localhost:3000/user`, {
-      method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: this.props.token,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ idea: data });
-      })
-      .catch((error) => {
-        console.log("Something went wrong. Please try again", error);
-      });
-  };
 
   getComments = () => {
     fetch(`http://localhost:3000/comment`, {
@@ -70,24 +30,29 @@ class CommentIndex extends React.Component {
         console.log("Something went wrong. Please try again", error);
       });
   };
+  componentDidMount(){
+    this.getComments()
+  }
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
+      <div>
+        <Sitebar token={this.props.token} comments={this.getComments}/>
             {this.state.comment.map((comments) => (
               <div>
-                <p>name: {comments.name}</p>
-                <p>description: {comments.description}</p>
-                <p>category: {comments.category}</p>
-                <CommentUpdate comments={comments}/>,
-                <CommentDelete/>
+                <Card>
+                <CardHeader tag='h3'>name: {comments.name}</CardHeader>
+                <CardBody>description: {comments.description}</CardBody>
+                <CardText>category: {comments.category}</CardText>
+
+
+                <CommentUpdate token={this.props.token} comments={comments}/>
+
+                <CommentDelete token={this.props.token} comments={comments}/>
+                </Card>
               </div>
             ))}
-          </Col>
-        </Row>
-      </Container>
+         </div> 
     );
   }
 }

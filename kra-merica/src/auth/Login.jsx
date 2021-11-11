@@ -55,7 +55,7 @@ class Login extends React.Component{
 
         render() {
           return (
-            <div>
+            <div className='loginbox' >
               <Form onSubmit={this.submitLogin}>
                 <FormGroup>
                   <Input type="firstName" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handlechange} required/>
@@ -64,8 +64,7 @@ class Login extends React.Component{
                 <FormGroup>
                   <Input type="passwordhash" name="passwordhash" placeholder="Password" value={this.state.passwordhash} onChange={this.handlechange} required/>
                 </FormGroup>
-
-                <Button onClick = {this.submitLogin.bind(this)}>Log In</Button>
+                <Button type='submit'>Log In</Button>
               </Form>
             </div>
           );

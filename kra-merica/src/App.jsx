@@ -3,7 +3,6 @@ import "./App.css";
 import React from 'react'
 import Auth from "./auth/Auth";
 import IdeaIndex from "./ideas/IdeaIndex";
-import CommentIndex from "./comments/CommentIndex";
 
 
 
@@ -29,20 +28,22 @@ class App extends React.Component {
 
   clearToken = () => {
     localStorage.clear();
-    this.setState('')
+    this.setState({ sessionToken: ''})
   }
 
   protectedViews = () => {
-     return localStorage.getItem('token') ? ( <IdeaIndex clearToken={this.clearToken} token={this.state.sessionToken}/>
+    console.log(this.state.sessionToken)
+     return this.state.sessionToken !== undefined && this.state.sessionToken !== '' && this.state.sessionToken !== null ? ( <IdeaIndex clearToken={this.clearToken} token={this.state.sessionToken}/> 
     ) : (
       <Auth updateToken={this.updateToken}/>
     );
   };
 
+  
+
   render(){
     return (
       <div>
-        
       {this.protectedViews()}
       </div>
       

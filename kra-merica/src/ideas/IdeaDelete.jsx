@@ -15,7 +15,7 @@ class IdeaDelete extends React.Component{
 
         console.log('Hello!!');
 
-        fetch(`http://localhost:3000/idea/delete`,
+        fetch(`http://localhost:3000/idea/delete/${this.props.idea.id}`,
         {   method: 'DELETE',            
             headers: new Headers({
             'Content-Type': 'application/json',
@@ -26,7 +26,14 @@ class IdeaDelete extends React.Component{
         .catch(error => {
         console.log('Create error', error);
         })
+        this.refreshPage()
     }
+
+    refreshPage = () => {
+        setTimeout(() => {
+          window.location.reload();
+        });
+      };
 
     toggle = () => {
         this.setState({modal: !this.state.modal});
@@ -38,7 +45,7 @@ class IdeaDelete extends React.Component{
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Delete</ModalHeader> 
             <ModalBody>
-                <Button>Delete</Button>
+                <Button type='delete' onClick={this.handleDelete}>Delete</Button>
             </ModalBody>
             </Modal>
         </div>
