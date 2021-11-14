@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody,  } from 'reactstrap';
 
 
 class IdeaDelete extends React.Component{
@@ -11,12 +11,12 @@ class IdeaDelete extends React.Component{
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleDelete = (e) => {
+    handleDelete = () => {
 
         console.log('Hello!!');
 
         fetch(`http://localhost:3000/idea/delete/${this.props.idea.id}`,
-        {   method: 'DELETE',            
+        {   method: "DELETE",            
             headers: new Headers({
             'Content-Type': 'application/json',
             authorization: this.props.token

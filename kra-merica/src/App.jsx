@@ -4,8 +4,6 @@ import React from 'react'
 import Auth from "./auth/Auth";
 import IdeaIndex from "./ideas/IdeaIndex";
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,17 +31,16 @@ class App extends React.Component {
 
   protectedViews = () => {
     console.log(this.state.sessionToken)
-     return this.state.sessionToken !== undefined && this.state.sessionToken !== '' && this.state.sessionToken !== null ? ( <IdeaIndex clearToken={this.clearToken} token={this.state.sessionToken}/> 
-    ) : (
+     return this.state.sessionToken !== undefined && this.state.sessionToken !== '' && this.state.sessionToken !== null ? <IdeaIndex clearToken={this.clearToken} token={this.state.sessionToken}/> 
+     : (
       <Auth updateToken={this.updateToken}/>
     );
   };
 
-  
 
   render(){
     return (
-      <div>
+      <div className='main-page'>
       {this.protectedViews()}
       </div>
       

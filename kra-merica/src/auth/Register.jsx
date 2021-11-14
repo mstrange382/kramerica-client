@@ -84,7 +84,10 @@ class Register extends React.Component{
             <Input type="admin" name="admin" placeholder="Admin" value={this.state.admin} onChange={this.handlechange} required/> 
             </FormGroup>  
 
-            <Button type='submit'>Register</Button>        
+            <Button style={{
+              
+
+            }} type='submit'>Register</Button>        
           </Form>
         </div>       
         

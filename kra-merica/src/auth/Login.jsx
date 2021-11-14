@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Form, FormGroup } from 'reactstrap';
+import { Button, Input, Form, FormGroup, Container } from 'reactstrap';
 
 
 
@@ -55,8 +55,9 @@ class Login extends React.Component{
 
         render() {
           return (
-            <div className='loginbox' >
-              <Form onSubmit={this.submitLogin}>
+            <div >
+            <Container fluid='sm'>
+              <Form  onSubmit={this.submitLogin}>
                 <FormGroup>
                   <Input type="firstName" name="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handlechange} required/>
                 </FormGroup>
@@ -66,7 +67,10 @@ class Login extends React.Component{
                 </FormGroup>
                 <Button type='submit'>Log In</Button>
               </Form>
+              </Container>
+              
             </div>
+            
           );
         }
       

@@ -14,8 +14,8 @@ class IdeaUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
-      description: '',
+      category: "",
+      description: "",
       modal: false,
     };
     this.handleUpdate = this.handleUpdate.bind(this);
@@ -27,7 +27,6 @@ class IdeaUpdate extends React.Component {
       [e.target.name]: e.target.value,
     });
   }
-
 
   handleUpdate = (e) => {
     e.preventDefault();
@@ -43,12 +42,12 @@ class IdeaUpdate extends React.Component {
       }),
       headers: new Headers({
         "Content-Type": "application/json",
-        'Authorization': localStorage.getItem('token'),
+        Authorization: localStorage.getItem("token"),
       }),
     })
       .then((response) => response.json())
-      .then(() =>{
-          this.getIdeas()
+      .then(() => {
+        this.getIdeas();
       })
       .catch((error) => {
         console.log("Create error", error);
@@ -65,7 +64,6 @@ class IdeaUpdate extends React.Component {
   };
 
   render() {
-    
     return (
       <div>
         <Button color="info" onClick={this.toggle}>
@@ -84,7 +82,6 @@ class IdeaUpdate extends React.Component {
                   required
                 />
               </FormGroup>
-
               <FormGroup>
                 Description:
                 <Input
@@ -95,12 +92,11 @@ class IdeaUpdate extends React.Component {
                 />
               </FormGroup>
               <Button type="submit" color="primary" onClick={this.toggle}>
-              Submit
-            </Button>{" "}
+                Submit
+              </Button>{" "}
             </Form>
           </ModalBody>
           <ModalFooter>
-            
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>

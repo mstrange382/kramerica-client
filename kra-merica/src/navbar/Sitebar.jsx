@@ -4,18 +4,13 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
+  Container,
 } from "reactstrap";
 import IdeaCreate from "../ideas/IdeaCreate";
-import CommentCreate from "../comments/CommentCreate";
+
 
 class Sitebar extends React.Component {
   constructor(props) {
@@ -31,35 +26,31 @@ class Sitebar extends React.Component {
   render() {
     return (
       <div>
-        
-        <Navbar color="light" light expand="md">
-          <NavbarToggler onClick={this.toggle} />
+        <Container fluid='md'>
+        <Navbar className='navbar' padding='30px' light expand="md" >
+          <NavbarToggler  onClick={this.toggle} />
           <Collapse isOpen={this.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <IdeaCreate token={this.props.token} ideas={this.props.ideas} />
               </NavItem>
-              <NavItem>
-                <CommentCreate
-                  token={this.props.token}
-                  comments={this.props.comments}
-                />
-              </NavItem>
             </Nav>
-            <NavbarText>Simple Text</NavbarText>
+            <NavbarText className='welcome'>Welcome the Kra-Merica Submission Portal</NavbarText>
+            <Nav>
             <NavItem>
-                <Button  onClick={() => this.props.clickLogout()}>Logout</Button>
-              </NavItem>
+                <Button className='logout' onClick={() => this.props.clickLogout()}>Logout</Button>
+            </NavItem>
+            </Nav>
           </Collapse>
         </Navbar>
-        <Navbar  light expand="md">
+        <Navbar light expand="md">
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              
             </Nav>
           </Collapse>
         </Navbar>
+        </Container>
       </div>
     );
   }

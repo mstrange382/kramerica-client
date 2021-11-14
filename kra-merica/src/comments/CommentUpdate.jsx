@@ -6,16 +6,14 @@ class CommentUpdate extends React.Component{
         constructor(props){
             super(props)
             this.state={
-                category: this.props.ideaId,
                 description: this.props.ideaId,
                 modal: false,
             }
             this.handleUpdate = this.handleUpdate.bind(this);
             this.handleChange = this.handleChange.bind(this);
-            
         }
 
-        handleChange(e){
+        handleChange(e){                          
             this.setState({
               [e.target.name]: e.target.value
             })
@@ -30,7 +28,7 @@ class CommentUpdate extends React.Component{
 
               console.log(this.props.token);
 
-        fetch(`http://localhost:3000/idea${this.state.ideaId}`,
+        fetch(`http://localhost:3000/comment/update${this.state.ideaId}`,
               {
                   method: 'PUT',
                   body: JSON.stringify({
@@ -43,6 +41,9 @@ class CommentUpdate extends React.Component{
                   })
               })
               .then((response) => response.json())
+              .then(() => {
+                  this.getComments();
+              })
               .catch(error => {
                   console.log('Create error', error)
               })
@@ -58,23 +59,14 @@ class CommentUpdate extends React.Component{
          }
 
 render(){
-    console.log(this.props.ideas)
+    console.log(this.props.comments)
     return(
         <div>
-        <Button color="danger" onClick={this.toggle}>Update</Button>
+        <Button size='sm' color="danger" onClick={this.toggle}>Update</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>Update Your Idea</ModalHeader>
         <ModalBody >
           <Form onSubmit={this.handleUpdate}>
-        
-            <FormGroup>
-                Category:
-                <Input
-                name="category"
-                value={this.state.category}
-                onChange={this.handleChange} required/>
-            </FormGroup>
-
             <FormGroup>
                 Description:
                 <Input
