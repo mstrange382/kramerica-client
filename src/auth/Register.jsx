@@ -36,7 +36,7 @@ class Register extends React.Component{
       console.log('hey there brother!');
       
 
-      fetch(`${APIURL}/user/register`,{
+      fetch(`${APIURL}user/register`,{
       method: "POST",
       body: JSON.stringify({               
               firstName: firstName,

@@ -36,7 +36,7 @@ class Login extends React.Component{
 
           console.log('hello!!');
 
-          fetch(`${APIURL}/user/login`,{
+          fetch(`${APIURL}user/login`,{
             method:'POST',
             body: JSON.stringify({            
               firstName: firstName,
