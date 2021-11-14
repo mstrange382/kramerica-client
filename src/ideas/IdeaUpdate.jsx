@@ -35,7 +35,7 @@ class IdeaUpdate extends React.Component {
 
     console.log(this.props.token);
 
-    fetch(`${APIURL}/idea/update/${this.props.idea.id}`, {
+    fetch(`${APIURL}idea/update/${this.props.idea.id}`, {
       method: "PUT",
       body: JSON.stringify({
         category: category,

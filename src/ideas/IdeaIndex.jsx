@@ -19,7 +19,7 @@ class IdeaIndex extends Component {
   }
 
   getIdeas = () => {
-    fetch(`${APIURL}/idea`, {
+    fetch(`${APIURL}idea`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ class IdeaIndex extends Component {
   }
 
   getComments = () => {
-    fetch(`${APIURL}/comment`, {
+    fetch(`${APIURL}comment`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

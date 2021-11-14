@@ -36,7 +36,7 @@ class IdeaCreate extends React.Component {
     console.log("hello");
     console.log(this.props.token);
 
-    fetch(`${APIURL}/idea/create`, {
+    fetch(`${APIURL}idea/create`, {
       method: "POST",
       body: JSON.stringify({
         name: name,
