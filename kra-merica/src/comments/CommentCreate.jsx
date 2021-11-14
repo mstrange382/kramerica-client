@@ -9,6 +9,7 @@ import {
   ModalHeader,
   Modal,
 } from "reactstrap";
+import APIURL from "../helpers/environment";
 
 class CommentCreate extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CommentCreate extends React.Component {
 
     console.log(this.props.token);
 
-    fetch(`http://localhost:3000/comment/create/${this.props.ideas.id}`, {
+    fetch(`${APIURL}/comment/create/${this.props.ideas.id}`, {
       method: "POST",
       body: JSON.stringify({
         description: description,

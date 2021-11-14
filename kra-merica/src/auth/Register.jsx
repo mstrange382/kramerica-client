@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Form, FormGroup, Input, Button
 } from "reactstrap"
+import APIURL from '../helpers/environment';
 
 class Register extends React.Component{
     constructor(props){
@@ -35,7 +36,7 @@ class Register extends React.Component{
       console.log('hey there brother!');
       
 
-      fetch("http://localhost:3000/user/register",{
+      fetch(`${APIURL}/user/register`,{
       method: "POST",
       body: JSON.stringify({               
               firstName: firstName,

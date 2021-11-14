@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
+import APIURL from "../helpers/environment";
 
 class IdeaUpdate extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class IdeaUpdate extends React.Component {
 
     console.log(this.props.token);
 
-    fetch(`http://localhost:3000/idea/update/${this.props.idea.id}`, {
+    fetch(`${APIURL}/idea/update/${this.props.idea.id}`, {
       method: "PUT",
       body: JSON.stringify({
         category: category,
