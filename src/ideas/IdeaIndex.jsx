@@ -5,6 +5,7 @@ import IdeaDelete from "./IdeaDelete";
 import IdeaUpdate from "./IdeaUpdate";
 import CommentCreate from "../comments/CommentCreate";
 import CommentUpdate from "../comments/CommentUpdate";
+import APIURL from "../helpers/environment";
 
 class IdeaIndex extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class IdeaIndex extends Component {
   }
 
   getIdeas = () => {
-    fetch(`http://localhost:3000/idea`, {
+    fetch(`${APIURL}/idea`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -41,7 +42,7 @@ class IdeaIndex extends Component {
   }
 
   getComments = () => {
-    fetch(`http://localhost:3000/comment`, {
+    fetch(`${APIURL}/comment`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

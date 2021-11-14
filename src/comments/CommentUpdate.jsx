@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 
 class CommentUpdate extends React.Component{
@@ -28,7 +29,7 @@ class CommentUpdate extends React.Component{
 
               console.log(this.props.token);
 
-        fetch(`http://localhost:3000/comment/update${this.state.ideaId}`,
+        fetch(`${APIURL}/comment/update${this.state.ideaId}`,
               {
                   method: 'PUT',
                   body: JSON.stringify({

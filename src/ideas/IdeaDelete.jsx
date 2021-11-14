@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody,  } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 
 class IdeaDelete extends React.Component{
@@ -15,7 +16,7 @@ class IdeaDelete extends React.Component{
 
         console.log('Hello!!');
 
-        fetch(`http://localhost:3000/idea/delete/${this.props.idea.id}`,
+        fetch(`${APIURL}/idea/delete/${this.props.idea.id}`,
         {   method: "DELETE",            
             headers: new Headers({
             'Content-Type': 'application/json',

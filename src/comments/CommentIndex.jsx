@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardText } from "reactstrap";
+import APIURL from "../helpers/environment";
 import CommentDelete from "./CommentDelete";
 import CommentUpdate from "./CommentUpdate";
 
@@ -15,7 +16,7 @@ class CommentIndex extends React.Component {
 
   getComments = () => {
     console.log("comments?");
-    fetch(`http://localhost:3000/comment`, {
+    fetch(`${APIURL}/comment`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

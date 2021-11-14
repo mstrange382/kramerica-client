@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
+import APIURL from "../helpers/environment";
 
 class IdeaCreate extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class IdeaCreate extends React.Component {
     console.log("hello");
     console.log(this.props.token);
 
-    fetch(`http://localhost:3000/idea/create`, {
+    fetch(`${APIURL}/idea/create`, {
       method: "POST",
       body: JSON.stringify({
         name: name,

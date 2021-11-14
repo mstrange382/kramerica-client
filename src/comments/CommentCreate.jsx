@@ -4,88 +4,84 @@ import {
   Form,
   FormGroup,
   Input,
-  Modal,
-  ModalHeader,
   ModalBody,
   ModalFooter,
+  ModalHeader,
+  Modal,
 } from "reactstrap";
+import APIURL from "../helpers/environment";
 
-class IdeaUpdate extends React.Component {
+class CommentCreate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
       description: "",
       modal: false,
     };
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
-
-  handleUpdate = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const { category, description } = this.state;
+    const {  description } = this.state;
 
     console.log(this.props.token);
 
-    fetch(`http://localhost:3000/idea/update/${this.props.idea.id}`, {
-      method: "PUT",
+    fetch(`${APIURL}/comment/create/${this.props.ideas.id}`, {
+      method: "POST",
       body: JSON.stringify({
-        category: category,
         description: description,
+        
       }),
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"),
+        Authorization: this.props.token,
       }),
     })
       .then((response) => response.json())
-      .then(() => {
-        this.getIdeas();
+      .then((commentData) => {
+        this.props.comments();
+        this.setState({
+          category: "",
+          description: "",
+        });
       })
       .catch((error) => {
         console.log("Create error", error);
       });
-    this.refreshPage();
+      this.refreshPage()
   };
   refreshPage = () => {
     setTimeout(() => {
       window.location.reload();
     });
   };
+
   toggle = () => {
     this.setState({ modal: !this.state.modal });
   };
-
   render() {
     return (
       <div>
-        <Button color="info" onClick={this.toggle}>
-          Update
+        <Button color="secondary" onClick={this.toggle}>
+          Comment
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Update Your Idea</ModalHeader>
+          <ModalHeader toggle={this.toggle}>
+            Leave a comment here...
+          </ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleUpdate}>
+            <Form onSubmit={this.handleSubmit}>
+              
               <FormGroup>
-                Category:
-                <Input
-                  name="category"
-                  value={this.state.category}
-                  onChange={this.handleChange}
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                Description:
                 <Input
                   name="description"
+                  placeholder="Description"
                   value={this.state.description}
                   onChange={this.handleChange}
                   required
@@ -106,4 +102,5 @@ class IdeaUpdate extends React.Component {
     );
   }
 }
-export default IdeaUpdate;
+
+export default CommentCreate;
