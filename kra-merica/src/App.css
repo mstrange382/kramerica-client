@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #a0c4ff;
 }
 
 .App-logo {
@@ -39,6 +40,68 @@
 
 /* Red Badge Code */
 
+/* .login-register{
+    width: 500px;
+	max-width: 500px;
+	margin: auto;
+	padding: 2em;
+	text-align: center;
+	background: white;
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+} */
+
+.loginbox{
+    align-self: relative;
+}
+
+.navbar{
+    background: #ffadad;
+    float: none;
+    margin: 0, auto;
+    display: block;
+    text-align: center;
+}
+
+.main-page{
+    background: #a0c4ff;
+}
+
+.collapse-navbar-collapse{
+    padding: 300px
+}
+
+.btn-secondary{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-primary{
+    margin-left: 15px
+}
+
+.btn-info{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.btn-danger{
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.logout{
+    margin: auto;
+}
+
+.welcome{
+    margin: auto;
+    align-content: center;
+}
 html,
 body,
 #root {

@@ -3,8 +3,6 @@ import {
   Form, FormGroup, Input, Button
 } from "reactstrap"
 
-
-
 class Register extends React.Component{
     constructor(props){
         super(props)
@@ -25,6 +23,7 @@ class Register extends React.Component{
     }
 
   submitRegister = (e) =>  {
+    e.preventDefault();
     const {
       firstName,
       lastName,
@@ -34,6 +33,7 @@ class Register extends React.Component{
     } = this.state;
 
       console.log('hey there brother!');
+      
 
       fetch("http://localhost:3000/user/register",{
       method: "POST",
@@ -49,14 +49,16 @@ class Register extends React.Component{
       })
     })
     .then((response) => response.json())
-    .then((data) => this.props.updateToken(data.sessionToken) )
+    .then((data) => {
+      this.props.updateToken(data.sessionToken) 
+    console.log(data)
+  })
+
     .catch(error => {
     console.log('Registration Error', error);
     })
-     e.preventDefault(); 
+      
   };
-
-
     render(){
       return (
         <div>
@@ -82,7 +84,10 @@ class Register extends React.Component{
             <Input type="admin" name="admin" placeholder="Admin" value={this.state.admin} onChange={this.handlechange} required/> 
             </FormGroup>  
 
-            <Button onClick = {this.submitRegister.bind(this)}>Register</Button>        
+            <Button style={{
+              
+
+            }} type='submit'>Register</Button>        
           </Form>
         </div>       
         
