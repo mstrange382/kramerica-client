@@ -89,12 +89,12 @@ class IdeaIndex extends Component {
 
               
               
-              {ideas.comment.map((comments)=>(
+              {ideas.comments.map((comment)=>(
                 <div>
                   <Container fluid='md'>
                     <Card>
                       <CommentUpdate token={this.props.token} idea={ideas}/>
-                    {comments.description}
+                    {comment.description}
                     </Card>
                   </Container>
                   </div>
