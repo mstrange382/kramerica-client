@@ -73,7 +73,10 @@ class IdeaIndex extends Component {
           clickLogout={this.props.clearToken}
         />
         {this.state.idea.map((ideas) => (
-          <div>
+          <div style={{
+            height: 1000,
+            backgroundColor: '#a0c4ff'
+          }}>
             <Container fluid='md'>
             <Card  body className='text-center'>
               {console.log(ideas)}
