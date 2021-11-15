@@ -16,7 +16,7 @@ class IdeaDelete extends React.Component{
 
         console.log('Hello!!');
 
-        fetch(`${APIURL}idea/delete/${this.props.idea.id}`,
+        fetch(`${APIURL}/idea/delete/${this.props.idea.id}`,
         {   method: "DELETE",            
             headers: new Headers({
             'Content-Type': 'application/json',

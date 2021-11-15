@@ -16,7 +16,7 @@ class CommentIndex extends React.Component {
 
   getComments = () => {
     console.log("comments?");
-    fetch(`${APIURL}comment`, {
+    fetch(`${APIURL}/comment`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
