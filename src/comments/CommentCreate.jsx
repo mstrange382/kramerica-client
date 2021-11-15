@@ -32,11 +32,12 @@ class CommentCreate extends React.Component {
 
     console.log(this.props.token);
 
-    fetch(`${APIURL}/comment/create/${this.props.ideas.id}`, {
+    fetch(`${APIURL}/comment/create`, {
       method: "POST",
       body: JSON.stringify({
         description: description,
-        
+        ideaId:this.props.ideas.id,
+        userId:this.props.user.id
       }),
       headers: new Headers({
         "Content-Type": "application/json",
