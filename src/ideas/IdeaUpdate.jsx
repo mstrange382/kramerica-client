@@ -66,7 +66,10 @@ class IdeaUpdate extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{
+        height: 1000,
+        backgroundColor: '#a0c4ff'
+      }}>
         <Button color="info" onClick={this.toggle}>
           Update
         </Button>

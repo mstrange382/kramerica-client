@@ -54,10 +54,7 @@ class Auth extends React.Component {
             <Col>
             <p>
               <h3>Welcome to the Kra-Merica Employee Submission</h3>
-              <h5>fjdkfdjffjf
-                fjfksdjfkfjsdjfsdlf
-                fdfjdksjfkdsjfsdjf
-                djfkdsjfkls;a
+              <h5>Hello and welcome the the Kra-Merica Employee Submission Portal. Here at Kra-Merica we believe in a better tomorrow....today! As an employee we believe that you play an integral role in moving that vision forward. Here on this portal you'll be able to submit ideas and see other ideas submitted by your fellow employees.   
               </h5>
             </p>
             </Col>

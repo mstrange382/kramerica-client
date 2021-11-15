@@ -37,7 +37,7 @@ class IdeaIndex extends Component {
   componentDidMount() {
     this.getIdeas();
     console.log('dis this mount? ideas')
-    this.getComments()
+    // this.getComments()
     
   }
 
