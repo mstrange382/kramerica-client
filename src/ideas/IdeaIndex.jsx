@@ -63,7 +63,10 @@ class IdeaIndex extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{
+        height: 1000,
+        backgroundColor: '#a0c4ff'
+      }}>
         <Sitebar
           token={this.props.token}
           ideas={this.getIdeas}
