@@ -43,7 +43,7 @@ class App extends React.Component {
       <div style={{
         height: 1000,
         backgroundColor: '#a0c4ff'
-      }} className='main-page'>
+      }} >
       {this.protectedViews()}
       </div>
       

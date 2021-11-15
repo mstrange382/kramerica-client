@@ -20,7 +20,7 @@ class IdeaDelete extends React.Component{
         {   method: "DELETE",            
             headers: new Headers({
             'Content-Type': 'application/json',
-            authorization: this.props.token
+            Authorization:localStorage.getItem('token')
             })
         })
         .then((response) => response.json())

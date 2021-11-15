@@ -86,6 +86,8 @@ class IdeaIndex extends Component {
               <IdeaDelete token={this.props.token} idea={ideas} />
 
               <CommentCreate ideas={ideas} token={this.props.token} comments={this.props.comments}/>
+
+              
               
               {ideas.comments.map((comment)=>(
                 <div>
@@ -95,7 +97,6 @@ class IdeaIndex extends Component {
                     {comment.description}
                     </Card>
                   </Container>
-                  
                   </div>
               ))}
               
