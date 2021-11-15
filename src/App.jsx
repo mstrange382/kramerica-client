@@ -40,7 +40,10 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className='main-page'>
+      <div style={{
+        height: 1000,
+        backgroundColor: '#a0c4ff'
+      }} className='main-page'>
       {this.protectedViews()}
       </div>
       
