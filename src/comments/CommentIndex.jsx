@@ -1,8 +1,6 @@
 import React from "react";
-import { Card, CardBody, CardText } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import APIURL from "../helpers/environment";
-import CommentDelete from "./CommentDelete";
-import CommentUpdate from "./CommentUpdate";
 
 class CommentIndex extends React.Component {
   constructor(props) {
@@ -46,16 +44,6 @@ class CommentIndex extends React.Component {
                 <div>
                   <Card>
                     <CardBody>Comment: {comment.description}</CardBody>
-
-                    {/* <CommentUpdate
-                      token={this.props.token}
-                      comments={comment}
-                    />
-
-                    <CommentDelete
-                      token={this.props.token}
-                      comments={comment}
-                    /> */}
                   </Card>
                 </div>
               );

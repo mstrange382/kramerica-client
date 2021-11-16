@@ -18,7 +18,7 @@ class IdeaCreate extends React.Component {
       name: "",
       category: "",
       description: "",
-      modal: false
+      modal: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -50,18 +50,17 @@ class IdeaCreate extends React.Component {
     })
       .then((response) => response.json())
       .then((ideaData) => {
-          this.props.ideas();
-          this.setState({
-              name:'',
-              category:'',
-              description:'',
-          })
+        this.props.ideas();
+        this.setState({
+          name: "",
+          category: "",
+          description: "",
+        });
       })
       .catch((error) => {
         console.log("Create error", error);
       });
   };
-
 
   toggle = () => {
     this.setState({ modal: !this.state.modal });
@@ -86,7 +85,6 @@ class IdeaCreate extends React.Component {
                   required
                 />
               </FormGroup>
-
               <FormGroup>
                 <Input
                   name="category"
@@ -96,7 +94,6 @@ class IdeaCreate extends React.Component {
                   required
                 />
               </FormGroup>
-
               <FormGroup>
                 <Input
                   name="description"
@@ -107,8 +104,8 @@ class IdeaCreate extends React.Component {
                 />
               </FormGroup>
               <Button type="submit" color="primary" onClick={this.toggle}>
-              Submit
-            </Button>{" "}
+                Submit
+              </Button>{" "}
             </Form>
           </ModalBody>
           <ModalFooter>

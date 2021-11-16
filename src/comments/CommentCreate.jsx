@@ -28,7 +28,7 @@ class CommentCreate extends React.Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const {  description } = this.state;
+    const { description } = this.state;
 
     console.log(this.props.token);
 
@@ -36,8 +36,8 @@ class CommentCreate extends React.Component {
       method: "POST",
       body: JSON.stringify({
         description: description,
-        ideaId:this.props.ideas.id,
-        userId:this.props.user.id
+        ideaId: this.props.ideas.id,
+        // userId:this.props.user.id
       }),
       headers: new Headers({
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ class CommentCreate extends React.Component {
       .catch((error) => {
         console.log("Create error", error);
       });
-      this.refreshPage()
+    this.refreshPage();
   };
   refreshPage = () => {
     setTimeout(() => {
@@ -78,7 +78,6 @@ class CommentCreate extends React.Component {
           </ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
-              
               <FormGroup>
                 <Input
                   name="description"

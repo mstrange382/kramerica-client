@@ -19,7 +19,6 @@ class IdeaUpdate extends React.Component {
       description: "",
       modal: false,
     };
-    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 

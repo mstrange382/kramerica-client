@@ -6,6 +6,7 @@ import IdeaUpdate from "./IdeaUpdate";
 import CommentCreate from "../comments/CommentCreate";
 import CommentUpdate from "../comments/CommentUpdate";
 import APIURL from "../helpers/environment";
+import CommentDelete from "../comments/CommentDelete";
 
 class IdeaIndex extends Component {
   constructor(props) {
@@ -13,9 +14,8 @@ class IdeaIndex extends Component {
     this.state = {
       idea: [],
       commentData: [],
-      comments: ''
+      comments: "",
     };
-    
   }
 
   getIdeas = () => {
@@ -36,9 +36,8 @@ class IdeaIndex extends Component {
   };
   componentDidMount() {
     this.getIdeas();
-    console.log('dis this mount? ideas')
+    console.log("dis this mount? ideas");
     // this.getComments()
-    
   }
 
   getComments = () => {
@@ -52,62 +51,75 @@ class IdeaIndex extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({ commentData: data });
-        console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.log("Something went wrong. Please try again", error);
       });
   };
 
-  
-
   render() {
     return (
-      <div style={{
-        height: 1000,
-        backgroundColor: '#a0c4ff'
-      }}>
+      <div
+        style={{
+          // height: 500,
+          backgroundColor: "#a0c4ff",
+        }}
+      >
         <Sitebar
           token={this.props.token}
           ideas={this.getIdeas}
           clickLogout={this.props.clearToken}
         />
         {this.state.idea.map((ideas) => (
-          <div style={{
-            height: 1000,
-            backgroundColor: '#a0c4ff'
-          }}>
-            <Container fluid='md'>
-            <Card  body className='text-center'>
-              {console.log(ideas)}
-              <CardHeader color='#caffbf' tag="h5">Name: {ideas.name}</CardHeader>
-              <CardBody>Category: {ideas.category}</CardBody>
-              <CardText>Description: {ideas.description}</CardText>
-              
-              <IdeaUpdate token={this.props.token} idea={ideas} />
+          <div
+            style={{
+              // height: 500,
+              backgroundColor: "#a0c4ff",
+            }}
+          >
+            <Container fluid="md">
+              <Card body className="text-center">
+                {console.log(ideas)}
+                <CardHeader color="#caffbf" tag="h5">
+                  Name: {ideas.name}
+                </CardHeader>
+                <CardBody>Category: {ideas.category}</CardBody>
+                <CardText>Description: {ideas.description}</CardText>
 
-              <IdeaDelete token={this.props.token} idea={ideas} />
+                <IdeaUpdate token={this.props.token} idea={ideas} />
 
-              <CommentCreate ideas={ideas} token={this.props.token} comments={this.props.comments}/>
+                <IdeaDelete token={this.props.token} idea={ideas} />
 
-              
-              
-              {ideas.comments.map((comment)=>(
-                <div>
-                  <Container fluid='md'>
-                    <Card>
-                      <CommentUpdate token={this.props.token} idea={ideas}/>
-                    {comment.description}
-                    </Card>
-                  </Container>
+                <CommentCreate
+                  ideas={ideas}
+                  token={this.props.token}
+                  comments={this.props.comments}
+                />
+
+                {ideas.comments.map((comment) => (
+                  <div>
+                    <Container fluid="md">
+                      <Card>
+                        <CommentUpdate
+                          token={this.props.token}
+                          idea={ideas}
+                          comment={comment}
+                        />
+                        {comment.description}
+
+                        <CommentDelete
+                          token={this.props.token}
+                          comment={comment}
+                        />
+                      </Card>
+                    </Container>
                   </div>
-              ))}
-              
-            </Card>
+                ))}
+              </Card>
             </Container>
           </div>
         ))}
-        
       </div>
     );
   }

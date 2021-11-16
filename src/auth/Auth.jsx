@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Button, Modal, FormGroup, Input, Form, Container, Row, Col, Jumbotron, Card } from "reactstrap";
+import { Button, Modal, Container, Row, Col, Card } from "reactstrap";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -18,45 +17,61 @@ class Auth extends React.Component {
   render() {
     console.log(this.props.updateToken);
     return (
-      <div style={{
-        height: 1000,
-        backgroundColor: '#a0c4ff'
-      }}>
-        
-        <Container style={{
-          backgroundColor: '#ffadad'
-        }} >  
-            <Row>  
-              <Col>
-        <Card style={{
-          backgroundColor:'#ffadad',
-          }}>     
-        <Button>
-          <Login  updateToken={this.props.updateToken} />
-        </Button>
-        
-        <Button style={{
-          backgroundColor:'#ffadad',
-          border:null
-          }} 
-        color='link #ffadad' onClick={this.toggle}>Need to register? Click here</Button>
-
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <Register updateToken={this.props.updateToken} />         
-        </Modal>     
-        </Card>
-        </Col>
-        </Row>       
-        </Container>
-
-        <Container >
+      <div
+        style={{
+          height: 1000,
+          backgroundColor: "#a0c4ff",
+        }}
+      >
+        <Container
+          style={{
+            backgroundColor: "#ffadad",
+          }}
+        >
           <Row>
             <Col>
-            <p>
-              <h3>Welcome to the Kra-Merica Employee Submission</h3>
-              <h5>Hello and welcome the the Kra-Merica Employee Submission Portal. Here at Kra-Merica we believe in a better tomorrow....today! As an employee we believe that you play an integral role in moving that vision forward. Here on this portal you'll be able to submit ideas and see other ideas submitted by your fellow employees.   
-              </h5>
-            </p>
+              <Card
+                style={{
+                  backgroundColor: "#ffadad",
+                }}
+              >
+                <Button>
+                  <Login updateToken={this.props.updateToken} />
+                </Button>
+
+                <Button
+                  style={{
+                    backgroundColor: "#ffadad",
+                    border: null,
+                  }}
+                  color="link #ffadad"
+                  onClick={this.toggle}
+                >
+                  Need to register? Click here
+                </Button>
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                  <Register updateToken={this.props.updateToken} />
+                </Modal>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+
+        <Container>
+          <Row>
+            <Col>
+              <p>
+                <h3>Welcome to the Kra-Merica Employee Submission</h3>
+                <h5>
+                  Hello and welcome the the Kra-Merica Employee Submission
+                  Portal. Here at Kra-Merica we believe in a better
+                  tomorrow....today! As an employee we believe that you play an
+                  integral role in moving that vision forward. Here on this
+                  portal you'll be able to submit ideas and see other ideas
+                  submitted by your fellow employees.
+                </h5>
+              </p>
             </Col>
           </Row>
         </Container>
