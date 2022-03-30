@@ -98,7 +98,7 @@ class Register extends React.Component {
             />
           </FormGroup>
 
-          <FormGroup>
+          {/* <FormGroup>
             <Input
               type="admin"
               name="admin"
@@ -107,7 +107,7 @@ class Register extends React.Component {
               onChange={this.handlechange}
               required
             />
-          </FormGroup>
+          </FormGroup> */}
 
           <Button style={{}} type="submit">
             Register
